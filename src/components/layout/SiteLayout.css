@@ -5,7 +5,7 @@
   }
 
 .sitelayout-header{
-    background: #8d6e3a;
+    background: #8d6f3aa1;
     color: #faf9f8;
     /* display: flex;
     justify-content: space-between;
@@ -18,7 +18,7 @@
   }
 
 .sitelayout-footer{
-    background: #8d6e3a;
+    background: #8d6f3aa1;
     color: #faf9f8;
     text-align: center;
 }
