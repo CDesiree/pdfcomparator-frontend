@@ -1,0 +1,25 @@
+.sitelayout-bg{
+    background: #faf9f8;
+    color: #8d6e3a; 
+    min-height: calc(100vh - 134px);
+  }
+
+.sitelayout-header{
+    background: #8d6e3a;
+    color: #faf9f8;
+    /* display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 70px;
+    width: 100vw;
+    padding-left: 100px;
+    position: fixed;
+    z-index: 10; */
+  }
+
+.sitelayout-footer{
+    background: #8d6e3a;
+    color: #faf9f8;
+    text-align: center;
+}
+
