@@ -8,7 +8,7 @@ function SiteLayout() {
     return (
         <Layout>
             <Header className="sitelayout-header">DPMC Comparator Tool</Header>
-            <Content className="sitelayout-bg">Body
+            <Content className="sitelayout-bg">
                 <Outlet />
             </Content>
             <Footer className="sitelayout-footer">DPMC {new Date().getFullYear()} Created by CASTRDE</Footer>
