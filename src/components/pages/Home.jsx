@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
+import "./Home.css"
 
 function Home() {
     const [file1, setFile1] = useState(null);
     const [file2, setFile2] = useState(null);
+    // const [comparedFile, setComparedFile] = useState(null);
 
     const handleFile1 = (event, fileKey) => {
         setFile1(event.target.files[0]);
@@ -21,18 +23,28 @@ function Home() {
         axios.post("http://localhost:8080/api/pdf/compare", formData)
             .then(response => {
                 console.log(response.data);
+                // setComparedFile(response.data);
             })
             .catch(error => {
                 console.error("Error: ", error);
             })
     }
 
+    const handleDownload = () => {
+        window.open("http://localhost:8080/api/pdf/download");
+    }
+
     return (
         <>
             <div className="home-page">
-                <input type="file" onChange={handleFile1} />
-                <input type="file" onChange={handleFile2} />
-                <button onClick={handleCompare}>Compare</button>
+                <div className="table-container">
+                    <input type="file" onChange={handleFile1} />
+                    <input type="file" onChange={handleFile2} />
+                    <button onClick={handleDownload}>Compared File</button>
+                    <div className="button-container">
+                        <button onClick={handleCompare}>Compare</button>
+                    </div>
+                </div>
             </div>
         </>
     );

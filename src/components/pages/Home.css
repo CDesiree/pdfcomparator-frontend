@@ -1,0 +1,14 @@
+.table-container{
+    margin: 200px;
+    border: 1px solid #8d6e3a;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.button-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
