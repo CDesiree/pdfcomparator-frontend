@@ -11,7 +11,7 @@ function SiteLayout() {
             <Content className="sitelayout-bg">
                 <Outlet />
             </Content>
-            <Footer className="sitelayout-footer">DPMC {new Date().getFullYear()} Created by CASTRDE</Footer>
+            <Footer className="sitelayout-footer">DPMC {new Date().getFullYear()}</Footer>
         </Layout>
     )
 
