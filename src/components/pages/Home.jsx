@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./Home.css"
+import { Button, Tooltip } from "antd";
 
 function Home() {
     const [file1, setFile1] = useState(null);
@@ -50,9 +51,13 @@ function Home() {
                 <div className="table-container">
                     <input type="file" onChange={handleFile1} />
                     <input type="file" onChange={handleFile2} />
-                    <button onClick={handleDownload} disabled={downloadDisabled}>Compared File</button>
+                    <Tooltip title={downloadDisabled ? 'Files are not yet compared' : ''}>
+                        <Button onClick={handleDownload} disabled={downloadDisabled}>Compared File</Button>
+                    </Tooltip>
                     <div className="button-container">
-                        <button onClick={handleCompare} disabled={compareDisabled}>Compare</button>
+                        <Tooltip title={compareDisabled ? 'Files are not yet selected': ''}>
+                            <Button onClick={handleCompare} disabled={compareDisabled}>Compare</Button>
+                        </Tooltip>
                     </div>
                 </div>
             </div>
