@@ -1,7 +1,7 @@
-import axios from "axios";
 import React, { useState } from "react";
 import "./Home.css"
 import { Button, Tooltip } from "antd";
+import { comparePdf, downloadPdf } from '../apis/api';
 
 function Home() {
     const [file1, setFile1] = useState(null);
@@ -25,24 +25,19 @@ function Home() {
         setCompareDisabled(!areFilesSelected);
     }
 
-     //To do: separate axios
     const handleCompare = () => {
-        const formData = new FormData();
-        formData.append("file1", file1);
-        formData.append("file2", file2);
-
-        axios.post("http://localhost:8080/api/pdf/compare", formData)
-            .then(response => {
-                console.log(response.data);
-                setDownloadDisabled(false);
-            })
-            .catch(error => {
-                console.error("Error: ", error);
-            })
+        comparePdf(file1, file2)
+          .then(response => {
+            console.log(response.data);
+            setDownloadDisabled(false);
+          })
+          .catch(error => {
+            console.error('Error: ', error);
+          });
     }
 
     const handleDownload = () => {
-        window.open("http://localhost:8080/api/pdf/download");
+        downloadPdf();
     }
 
     return (
