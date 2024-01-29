@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css"
-import { Button, Tooltip } from "antd";
+import { Button, Tooltip, message } from "antd";
 import { comparePdf, downloadPdf } from '../apis/api';
 
 function Home() {
@@ -33,6 +33,13 @@ function Home() {
           })
           .catch(error => {
             console.error('Error: ', error);
+            if (error.response) {
+                message.error(`Server Error: ${error.response.status}`);
+            } else if (error.request) {
+                message.error("Backend is down. Please try again later.");
+            } else {
+                message.error("Error: " + error.message);
+            }
           });
     }
 
