@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Home.css"
-import { Button, Tooltip, message } from "antd";
+import { Button, Spin, Tooltip, message } from "antd";
 import { comparePdf, downloadPdf } from '../apis/api';
 
 function Home() {
@@ -8,6 +8,7 @@ function Home() {
     const [file2, setFile2] = useState(null);
     const [downloadDisabled, setDownloadDisabled] = useState(true);
     const [compareDisabled, setCompareDisabled] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     const handleFile1 = (event, fileKey) => {
         setFile1(event.target.files[0]);
@@ -26,6 +27,7 @@ function Home() {
     }
 
     const handleCompare = () => {
+        setLoading(true);
         comparePdf(file1, file2)
           .then(response => {
             console.log(response.data);
@@ -40,6 +42,9 @@ function Home() {
             } else {
                 message.error("Error: " + error.message);
             }
+          })
+          .finally(() => {
+            setLoading(false);
           });
     }
 
@@ -56,6 +61,7 @@ function Home() {
                     <Tooltip title={downloadDisabled ? 'Files are not yet compared' : ''}>
                         <Button onClick={handleDownload} disabled={downloadDisabled}>Compared File</Button>
                     </Tooltip>
+                    <Spin spinning={loading} fullscreen></Spin>
                     <div className="button-container">
                         <Tooltip title={compareDisabled ? 'Files are not yet selected': ''}>
                             <Button onClick={handleCompare} disabled={compareDisabled}>Compare</Button>
